@@ -1,0 +1,12 @@
+---
+startDelaySeconds: 0
+ssl: false
+lowercaseOutputName: true
+lowercaseOutputLabelNames: true
+whitelistObjectNames: ["java.lang:type=Memory", "java.lang:type=Threading", "java.lang:type=GarbageCollector,*"]
+rules:
+  - pattern: 'java.lang<type=(.*), name=(.*)><>Usage'
+    name: java_lang_$1_$2_usage
+    type: GAUGE
+    labels:
+      name: "$2"
